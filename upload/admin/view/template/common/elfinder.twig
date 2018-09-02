@@ -1,0 +1,91 @@
+<div id="filemanager" class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title">Elfinder</h4>
+    </div>
+    <div class="modal-body">
+		<div class="elfinder-wr row">
+			<div id="elfinder" data-connector-url="{{ connector_url }}"></div>
+		</div>
+	 </div>
+  </div>
+</div>
+
+<link type="text/css" href="view/javascript/jquery/jquery-ui/jquery-ui.min.css" rel="stylesheet" media="screen" />
+<link type="text/css" href="view/javascript/elFinder/css/elfinder.min.css" rel="stylesheet" media="screen" />
+<link type="text/css" href="view/javascript/elFinder/css/theme.css" rel="stylesheet" media="screen" />
+
+<script type="text/javascript" src="view/javascript/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="view/javascript/jquery/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="view/javascript/elFinder/js/elfinder.min.js"></script>
+<script type="text/javascript" src="view/javascript/elFinder/js/extras/editors.default.min.js"></script>
+
+<style type="text/css">
+.modal-content {
+    background-color:#BBD6EC;
+}        
+.modal-header {
+    background-color: #337AB7;
+    padding:16px 16px;
+    color:#FFF;
+    border-bottom:2px dashed #337AB7;
+ }
+.modal-lg {
+    width: 75%;
+}
+.modal-body {
+    padding: 0 15px;
+}
+.modal-body .elfinder {
+    border-top: 0!important;
+}
+
+</style>
+	
+
+<script type="text/javascript"><!--
+$(document).ready(function() {
+	var elfinder = $('#elfinder');
+	var elfinderConnectorUrl = elfinder.data('connector-url');
+    elfinder.elfinder({
+        baseUrl:     'view/javascript/elFinder/',
+        url:         elfinderConnectorUrl,
+        lang:		 'fr',
+        height:      800,       
+        resizable:   false,
+        showFiles : 1000,
+        ui: ['toolbar', 'tree', 'places', 'path', 'stat'],
+        //contextmenu : {
+		//	navbar : ['open', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'info'],
+		//	cwd    : ['reload', 'back', '|', 'upload', 'mkdir', 'mkfile', 'paste', '|', 'sort', '|', 'info'],
+		//	files  : ['getfile', '|', 'custom', 'quicklook', '|', 'download', '|', 'copy', 'cut', 'paste', 'duplicate', '|', 'rm', '|', 'edit', 'rename', 'resize', '|', 'archive', 'extract']
+		//},
+        commandsOptions: {			
+            getfile: { multiple: false, onlyURL:false },
+            help: { view : ['about', 'shortcuts'] },
+            //edit: { extraOptions: { creativeCloudApiKey: '6e62687b643a413cbb6aedf72ced95e3' } },            
+        },
+        closeOnEditorCallback: true,
+        getFileCallback: 
+            function(file, fm) {                                                
+                               
+                {% if target %}
+				$('#{{target}}').val(file.path.substr(6));
+				{% endif %}
+        
+			    {% if thumb %}
+				$('#{{thumb}}').find('img').attr('src', file.tmb);
+				{% endif %}                      							                                   							
+                      
+                {% if textarea %}         						
+				$('#{{textarea}}').summernote('insertImage',file.url);
+				{% endif %}                                    		
+                                		
+                $('#modal-image').modal('hide');
+                fm.hide();
+        }
+    });	
+});
+
+//--></script>	
