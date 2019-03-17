@@ -1,41 +1,54 @@
-# elFinder - Opencart 3
+# elFinder 2.1.48 - Opencart 3.0.3 - Minio S3 
 
-Exemple de remplacement du FileManager Opencart standard (upload image+summernote) par [Elfinder](https://github.com/Studio-42/elFinder)
+Exemple de remplacement du FileManager Opencart standard (upload image+summernote) par [Elfinder](https://github.com/Studio-42/elFinder)  
+
+# New Features !
+
+> Ajout FULL support [minio S3](https://www.minio.io/) ***pour les images (Elfinder / Images admin et catalog)***   
+> Optimisation admin/catalog ModelToolImage avec jpegoptim et optipng
+
+### Core
+
+* Opencart 3.0.3 standard
+* Elfinder 2.1.48 standard complété de :
+  * composer require barryvdh/elfinder-flysystem-driver
+  * composer require league/flysystem-aws-s3-v3
 
 ### Installation (hors vqmod/ocmod)
 
-+ Copier l'ensemble du répertoire Upload en écrasant les fichiers (common.js et opencart.js)
-+ Donner le droit d'accès admin   
+* Copier l'ensemble du répertoire Upload en écrasant les fichiers 
+* Donner le droit d'accès admin 
     ```
-        common/elfinder
-        common/elfinderconnector 
-        extension/module/elfinder
-        extension/module/elfinderconnector
-    ``` 
-+ Rafraichir le cache (cache opencart / cache navigateur)
-+ Installer (ou pas) dans extension/module "Elfinder File manager"
+    extension/module/elfinder
+    extension/module/elfinderconnector
+    ```      
+* Rafraichir le cache (cache opencart / cache navigateur)
 
 ### Configuration
 
-+ Configuration du [connector elFinder](https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options) dans upload/admin/controller/common/elfinderconnector.php 
-+ Si "HTTP Basic Authentication" n'est pas setté, supprimer la ligne
++ Configuration du [connector elFinder](https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options) dans upload/admin/controller/extension/module/lfinderconnector.php 
++ Configuration du client S3 minio dans upload/admin/controller/extension/module/lfinderconnector.php 
+	```
+	$config_minio = [
+				'key' => 'xxxxxxxxxxxxxxxxxxxxxxxxx',
+				'secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+				'region' => 'us-east-1',  
+				'bucket' => 'xxxxxxxxxxxxxxx',     					
+				'endpoint' => 'http://xxx.xxx.xxx.xxx:xxxx/'	
+		];
+	```
++ Si "HTTP Basic Authentication" n'est pas setté via $_SERVER['PHP_AUTH_USER'], supprimer la ligne
     ```
     'attributes'	=> array( array( 'pattern'=>'/.+/', 'hidden'=>(isset($_SERVER['PHP_AUTH_USER']))? false     : true ))
     ```
-+ Configuration du [client elFinder](https://github.com/Studio-42/elFinder/wiki/Client-configuration-options) dans upload/admin/view/template/common/elfinder.twig
-    
-    **_idem pour la partie extension_** 
-
++ Configuration du [client elFinder](https://github.com/Studio-42/elFinder/wiki/Client-configuration-options) dans admin/view/template/extension/module/elfinder.twig 
+      
 ### Todos
 
  - Ocmod
- - Ckeditor (cf. béta opencart)
- - modification image
-
-License
-----
-
-MIT
+ - Panel extension admin pour gérer minio
+ - Cache Filesystem 
+ - Ckeditor (cf. futur release opencart)
 
 
 **Free Software, Hell Yeah!**

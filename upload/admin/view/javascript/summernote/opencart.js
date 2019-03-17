@@ -50,7 +50,7 @@ $(document).ready(function() {
 							$('#modal-image').remove();
 							
 							$.ajax({
-								url: 'index.php?route=common/elfinder&user_token=' + getURLVar('user_token') + '&textarea=' + $(element).attr('id'),		
+								url: 'index.php?route=extension/module/elfinder&user_token=' + getURLVar('user_token') + '&textarea=' + $(element).attr('id'),		
 								dataType: 'html',
 								beforeSend: function() {
 									$('#button-image i').replaceWith('<i class="fa fa-circle-o-notch fa-spin"></i>');

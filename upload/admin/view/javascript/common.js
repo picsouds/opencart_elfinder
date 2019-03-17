@@ -121,7 +121,7 @@ $(document).ready(function() {
 			$('#modal-image').remove();
 
 			$.ajax({
-				url: 'index.php?route=common/elfinder&user_token=' + getURLVar('user_token') + '&target=' + $element.parent().find('input').attr('id') + '&thumb=' + $element.attr('id'),
+				url: 'index.php?route=extension/module/elfinder&user_token=' + getURLVar('user_token') + '&target=' + $element.parent().find('input').attr('id') + '&thumb=' + $element.attr('id'),
 				dataType: 'html',
 				beforeSend: function() {
 					$button.prop('disabled', true);
