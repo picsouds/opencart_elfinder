@@ -145,6 +145,7 @@ class ControllerExtensionModuleelfinderconnector extends Controller {
 				'cache'         => false,
 				'attributes'    => array( array( 'pattern'=>'/.+/', 'hidden'=>(isset($_SERVER['PHP_AUTH_USER']))? false : true )),
 				'tmbSize'       => 100,
+				'useRemoteArchive' => true,
 				//'disabled'	    => array ('edit'),
 			)
 			)
