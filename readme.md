@@ -1,4 +1,4 @@
-# elFinder 2.1.48 - Opencart 3.0.3 - Minio S3 
+# elFinder- Opencart - Minio S3 
 
 Exemple de remplacement du FileManager Opencart standard (upload image+summernote) par [Elfinder](https://github.com/Studio-42/elFinder)  
 
@@ -9,10 +9,11 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
 
 ### Core
 
-* Opencart 3.0.3 standard
+* Opencart 3.0.3 standard 
 * Elfinder 2.1.48 standard complété de :
   * composer require barryvdh/elfinder-flysystem-driver
   * composer require league/flysystem-aws-s3-v3
+* Minio RELEASE.2019-03-06T22-47-10Z 
 
 ### Installation (hors vqmod/ocmod)
 
