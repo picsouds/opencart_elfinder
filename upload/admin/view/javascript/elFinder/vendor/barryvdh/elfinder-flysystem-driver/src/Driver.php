@@ -710,69 +710,69 @@ class Driver extends elFinderVolumeDriver
      * @author nao-pon
      * @author Troex Nevelin
      **/
-    public function resize($hash, $width, $height, $x, $y, $mode = 'resize', $bg = '', $degree = 0, $jpgQuality = null)
-    {
-        if ($this->commandDisabled('resize')) {
-            return $this->setError(elFinder::ERROR_PERM_DENIED);
-        }
+//     public function resize($hash, $width, $height, $x, $y, $mode = 'resize', $bg = '', $degree = 0, $jpgQuality = null)
+//     {
+//         if ($this->commandDisabled('resize')) {
+//             return $this->setError(elFinder::ERROR_PERM_DENIED);
+//         }
 
-        if (($file = $this->file($hash)) == false) {
-            return $this->setError(elFinder::ERROR_FILE_NOT_FOUND);
-        }
+//         if (($file = $this->file($hash)) == false) {
+//             return $this->setError(elFinder::ERROR_FILE_NOT_FOUND);
+//         }
 
-        if (!$file['write'] || !$file['read']) {
-            return $this->setError(elFinder::ERROR_PERM_DENIED);
-        }
+//         if (!$file['write'] || !$file['read']) {
+//             return $this->setError(elFinder::ERROR_PERM_DENIED);
+//         }
 
-        $path = $this->decode($hash);
-        if (!$this->canResize($path, $file)) {
-            return $this->setError(elFinder::ERROR_UNSUPPORT_TYPE);
-        }
+//         $path = $this->decode($hash);
+//         if (!$this->canResize($path, $file)) {
+//             return $this->setError(elFinder::ERROR_UNSUPPORT_TYPE);
+//         }
 
-        if (!$image = $this->imageManager->make($this->_getContents($path))) {
-            return false;
-        }
+//         if (!$image = $this->imageManager->make($this->_getContents($path))) {
+//             return false;
+//         }
 
-        switch ($mode) {
-            case 'propresize':
-                $image->resize($width, $height, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-                break;
+//         switch ($mode) {
+//             case 'propresize':
+//                 $image->resize($width, $height, function ($constraint) {
+//                     $constraint->aspectRatio();
+//                 });
+//                 break;
 
-            case 'crop':
-                $image->crop($width, $height, $x, $y);
-                break;
+//             case 'crop':
+//                 $image->crop($width, $height, $x, $y);
+//                 break;
 
-            case 'fitsquare':
-                $image->fit($width, $height, null, 'center');
-                break;
+//             case 'fitsquare':
+//                 $image->fit($width, $height, null, 'center');
+//                 break;
 
-            case 'rotate':
-                $image->rotate($degree);
-                break;
+//             case 'rotate':
+//                 $image->rotate($degree);
+//                 break;
 
-            default:
-                $image->resize($width, $height);
-                break;
-        }
+//             default:
+//                 $image->resize($width, $height);
+//                 break;
+//         }
 
-        if ($jpgQuality && $image->mime() === 'image/jpeg') {
-            $result = (string)$image->encode('jpg', $jpgQuality);
-        } else {
-            $result = (string)$image->encode();
-        }
-        if ($result && $this->_filePutContents($path, $result)) {
-            $this->rmTmb($file);
-            $this->clearstatcache();
-            $stat = $this->stat($path);
-            $stat['width'] = $image->width();
-            $stat['height'] = $image->height();
-            return $stat;
-        }
+//         if ($jpgQuality && $image->mime() === 'image/jpeg') {
+//             $result = (string)$image->encode('jpg', $jpgQuality);
+//         } else {
+//             $result = (string)$image->encode();
+//         }
+//         if ($result && $this->_filePutContents($path, $result)) {
+//             $this->rmTmb($file);
+//             $this->clearstatcache();
+//             $stat = $this->stat($path);
+//             $stat['width'] = $image->width();
+//             $stat['height'] = $image->height();
+//             return $stat;
+//         }
 
-        return false;
-    }
+//         return false;
+//     }
 
     public function getImageSize($path, $mime = '')
     {

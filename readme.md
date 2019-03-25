@@ -11,7 +11,7 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
 
 * Opencart 3.0.3 standard 
 * Elfinder 2.1.48 standard complété de :
-  * composer require barryvdh/elfinder-flysystem-driver
+  * composer require barryvdh/elfinder-flysystem-driver (sans function resize)
   * composer require league/flysystem-aws-s3-v3
 * Minio RELEASE.2019-03-06T22-47-10Z 
 
