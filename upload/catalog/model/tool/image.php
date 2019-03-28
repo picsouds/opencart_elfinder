@@ -10,7 +10,7 @@ class ModelToolImage extends Model {
 					
 			$headers = @get_headers($filename,1);	
 					
-			$pathUrl = parse_url($filename, PHP_URL_PATH);
+			$pathUrl = parse_url(urldecode($filename), PHP_URL_PATH);
 			$extension = pathinfo(parse_url($filename,PHP_URL_PATH),PATHINFO_EXTENSION);
 			
  			$image_old = $filename;
