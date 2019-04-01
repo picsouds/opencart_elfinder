@@ -3,6 +3,8 @@
 use Aws\S3\S3Client;
 use League\Flysystem\AwsS3v3\AwsS3Adapter;
 use League\Flysystem\Filesystem;
+use League\Flysystem\Cached\CachedAdapter;
+use League\Flysystem\Cached\Storage\Memory as MemoryStore;
 
 class ControllerExtensionModuleelfinderconnector extends Controller {
 
@@ -87,8 +89,9 @@ class ControllerExtensionModuleelfinderconnector extends Controller {
 				'override_visibility_on_copy' => true
 		];
 	
-		$adapter = new AwsS3Adapter($client,  $config_minio['bucket'], '', $options);	 
-		$filesystem = new Filesystem($adapter); 
+		$AwsS3Adapter = new AwsS3Adapter($client,  $config_minio['bucket'], '', $options);
+		$adapter = new CachedAdapter($AwsS3Adapter,new MemoryStore());	 	 
+		$filesystem = new Filesystem($adapter); 	
 				
 		$opts = array(
 		 //'debug' => true,
@@ -111,7 +114,10 @@ class ControllerExtensionModuleelfinderconnector extends Controller {
 				'uploadOrder'   => array('deny', 'allow'),      // allowed Mimetype `image` and `text/plain` only
 				'accessControl' => 'access',                    // disable and hide dot starting files (OPTIONAL)
 				'tmbSize'       => 100,
-				'attributes'	=> array( array( 'pattern'=>'/.+/', 'hidden'=>(isset($_SERVER['PHP_AUTH_USER']))? false : true ))
+				'attributes'	=> array( 
+									//array('pattern' => '!^/cache!','hidden' => true),
+									array( 'pattern'=>'/.+/', 'hidden'=>(isset($_SERVER['PHP_AUTH_USER']))? false : true ),									
+								   )
 			),
 			// Trash volume
 			array(
