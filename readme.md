@@ -4,9 +4,9 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
 
 # New Features !
 
-> Ajout FULL support [minio S3](https://www.minio.io/) ***pour les images (Elfinder / Images admin et catalog)*** avec [CachedAdapter](https://github.com/thephpleague/flysystem-cached-adapter)
-> Optimisation admin/catalog ModelToolImage avec jpegoptim et optipng
-> TUI image editor 3.5.2
+- Ajout FULL support [minio S3](https://www.minio.io/) ***pour les images (Elfinder / Images admin et catalog)*** avec [CachedAdapter](https://github.com/thephpleague/flysystem-cached-adapter)
+- Optimisation admin/catalog ModelToolImage avec jpegoptim et optipng
+- TUI image editor 3.5.2
 
 ### Core
 
@@ -49,7 +49,6 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
 
  - Ocmod
  - Panel extension admin pour gérer minio
- - Cache Filesystem 
  - Ckeditor (cf. futur release opencart)
 
 
