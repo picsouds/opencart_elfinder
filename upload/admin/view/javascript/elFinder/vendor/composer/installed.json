@@ -1,17 +1,17 @@
 [
     {
         "name": "aws/aws-sdk-php",
-        "version": "3.89.1",
-        "version_normalized": "3.89.1.0",
+        "version": "3.107.1",
+        "version_normalized": "3.107.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/aws/aws-sdk-php.git",
-            "reference": "9b085dff6b07eac417caef8cb6d26b471cde9a23"
+            "reference": "ccd3d13ae49a45bdf6a394d701f207c276dbf05a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/9b085dff6b07eac417caef8cb6d26b471cde9a23",
-            "reference": "9b085dff6b07eac417caef8cb6d26b471cde9a23",
+            "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ccd3d13ae49a45bdf6a394d701f207c276dbf05a",
+            "reference": "ccd3d13ae49a45bdf6a394d701f207c276dbf05a",
             "shasum": ""
         },
         "require": {
@@ -35,7 +35,8 @@
             "ext-sockets": "*",
             "nette/neon": "^2.3",
             "phpunit/phpunit": "^4.8.35|^5.4.3",
-            "psr/cache": "^1.0"
+            "psr/cache": "^1.0",
+            "psr/simple-cache": "^1.0"
         },
         "suggest": {
             "aws/aws-php-sns-message-validator": "To validate incoming SNS notifications",
@@ -44,7 +45,7 @@
             "ext-openssl": "Allows working with CloudFront private distributions and verifying received SNS messages",
             "ext-sockets": "To use client-side monitoring"
         },
-        "time": "2019-03-08T19:15:34+00:00",
+        "time": "2019-07-12T18:07:41+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -263,35 +264,39 @@
     },
     {
         "name": "guzzlehttp/psr7",
-        "version": "1.5.2",
-        "version_normalized": "1.5.2.0",
+        "version": "1.6.1",
+        "version_normalized": "1.6.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/guzzle/psr7.git",
-            "reference": "9f83dded91781a01c63574e387eaa769be769115"
+            "reference": "239400de7a173fe9901b9ac7c06497751f00727a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/psr7/zipball/9f83dded91781a01c63574e387eaa769be769115",
-            "reference": "9f83dded91781a01c63574e387eaa769be769115",
+            "url": "https://api.github.com/repos/guzzle/psr7/zipball/239400de7a173fe9901b9ac7c06497751f00727a",
+            "reference": "239400de7a173fe9901b9ac7c06497751f00727a",
             "shasum": ""
         },
         "require": {
             "php": ">=5.4.0",
             "psr/http-message": "~1.0",
-            "ralouphie/getallheaders": "^2.0.5"
+            "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
         },
         "provide": {
             "psr/http-message-implementation": "1.0"
         },
         "require-dev": {
+            "ext-zlib": "*",
             "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.8"
         },
-        "time": "2018-12-04T20:46:45+00:00",
+        "suggest": {
+            "zendframework/zend-httphandlerrunner": "Emit PSR-7 responses"
+        },
+        "time": "2019-07-01T23:21:34+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.5-dev"
+                "dev-master": "1.6-dev"
             }
         },
         "installation-source": "dist",
@@ -332,17 +337,17 @@
     },
     {
         "name": "intervention/image",
-        "version": "2.4.2",
-        "version_normalized": "2.4.2.0",
+        "version": "2.5.0",
+        "version_normalized": "2.5.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/Intervention/image.git",
-            "reference": "e82d274f786e3d4b866a59b173f42e716f0783eb"
+            "reference": "39eaef720d082ecc54c64bf54541c55f10db546d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Intervention/image/zipball/e82d274f786e3d4b866a59b173f42e716f0783eb",
-            "reference": "e82d274f786e3d4b866a59b173f42e716f0783eb",
+            "url": "https://api.github.com/repos/Intervention/image/zipball/39eaef720d082ecc54c64bf54541c55f10db546d",
+            "reference": "39eaef720d082ecc54c64bf54541c55f10db546d",
             "shasum": ""
         },
         "require": {
@@ -359,7 +364,7 @@
             "ext-imagick": "to use Imagick based image processing.",
             "intervention/imagecache": "Caching extension for the Intervention Image library"
         },
-        "time": "2018-05-29T14:19:03+00:00",
+        "time": "2019-06-24T14:06:31+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -404,17 +409,17 @@
     },
     {
         "name": "league/flysystem",
-        "version": "1.0.50",
-        "version_normalized": "1.0.50.0",
+        "version": "1.0.53",
+        "version_normalized": "1.0.53.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/flysystem.git",
-            "reference": "dab4e7624efa543a943be978008f439c333f2249"
+            "reference": "08e12b7628f035600634a5e76d95b5eb66cea674"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/dab4e7624efa543a943be978008f439c333f2249",
-            "reference": "dab4e7624efa543a943be978008f439c333f2249",
+            "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/08e12b7628f035600634a5e76d95b5eb66cea674",
+            "reference": "08e12b7628f035600634a5e76d95b5eb66cea674",
             "shasum": ""
         },
         "require": {
@@ -444,7 +449,7 @@
             "spatie/flysystem-dropbox": "Allows you to use Dropbox storage",
             "srmklive/flysystem-dropbox-v2": "Allows you to use Dropbox storage for PHP 5 applications"
         },
-        "time": "2019-02-01T08:50:36+00:00",
+        "time": "2019-06-18T20:09:29+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -490,17 +495,17 @@
     },
     {
         "name": "league/flysystem-aws-s3-v3",
-        "version": "1.0.22",
-        "version_normalized": "1.0.22.0",
+        "version": "1.0.23",
+        "version_normalized": "1.0.23.0",
         "source": {
             "type": "git",
             "url": "https://github.com/thephpleague/flysystem-aws-s3-v3.git",
-            "reference": "883b02c80ca9cd68cf58a9b4b2185beef24b836b"
+            "reference": "15b0cdeab7240bf8e8bffa85ae5275bbc3692bf4"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/883b02c80ca9cd68cf58a9b4b2185beef24b836b",
-            "reference": "883b02c80ca9cd68cf58a9b4b2185beef24b836b",
+            "url": "https://api.github.com/repos/thephpleague/flysystem-aws-s3-v3/zipball/15b0cdeab7240bf8e8bffa85ae5275bbc3692bf4",
+            "reference": "15b0cdeab7240bf8e8bffa85ae5275bbc3692bf4",
             "shasum": ""
         },
         "require": {
@@ -512,7 +517,7 @@
             "henrikbjorn/phpspec-code-coverage": "~1.0.1",
             "phpspec/phpspec": "^2.0.0"
         },
-        "time": "2019-01-31T15:07:25+00:00",
+        "time": "2019-06-05T17:18:29+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -745,27 +750,27 @@
     },
     {
         "name": "ralouphie/getallheaders",
-        "version": "2.0.5",
-        "version_normalized": "2.0.5.0",
+        "version": "3.0.3",
+        "version_normalized": "3.0.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/ralouphie/getallheaders.git",
-            "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa"
+            "reference": "120b605dfeb996808c31b6477290a714d356e822"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
-            "reference": "5601c8a83fbba7ef674a7369456d12f1e0d0eafa",
+            "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+            "reference": "120b605dfeb996808c31b6477290a714d356e822",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3"
+            "php": ">=5.6"
         },
         "require-dev": {
-            "phpunit/phpunit": "~3.7.0",
-            "satooshi/php-coveralls": ">=1.0"
+            "php-coveralls/php-coveralls": "^2.1",
+            "phpunit/phpunit": "^5 || ^6.5"
         },
-        "time": "2016-02-11T07:05:27+00:00",
+        "time": "2019-03-08T08:55:37+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

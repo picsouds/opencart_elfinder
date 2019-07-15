@@ -1,9 +1,9 @@
 {
     "name":        "studio-42/elfinder",
-    "version":     "2.1.48",
     "description": "File manager for web",
     "license":     "BSD-3-Clause",
     "homepage":    "http://elfinder.org",
+    "version":     "2.1.49",
     "authors": [
         {
             "name":     "Dmitry Levashov",
@@ -27,8 +27,8 @@
     ],
     "require": {
         "php": ">=5.2",
-        "league/flysystem-aws-s3-v3": "^1.0",
-        "barryvdh/elfinder-flysystem-driver": "^0.2.1"
+        "barryvdh/elfinder-flysystem-driver": "^0.2.1",
+        "league/flysystem-aws-s3-v3": "^1.0"
     },
     "suggest": {
         "kunalvarma05/dropbox-php-sdk": "VolumeDriver `Dropbox`2 require `kunalvarma05/dropbox-php-sdk.",

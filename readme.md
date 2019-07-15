@@ -11,10 +11,10 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
 ### Core
 
 * Opencart 3.0.3 standard 
-* Elfinder 2.1.48 standard complété de :
-  * composer require barryvdh/elfinder-flysystem-driver (sans function resize)
-  * composer require league/flysystem-aws-s3-v3
-* Minio RELEASE.2019-03-06T22-47-10Z 
+* Elfinder 2.1.49 standard complété de :
+  * composer require barryvdh/elfinder-flysystem-driver (sans function resize) 
+  * composer require league/flysystem-aws-s3-v3  
+* Testé avec Minio RELEASE.2019-03-06T22-47-10Z 
 
 ### Installation (hors vqmod/ocmod)
 
@@ -36,7 +36,7 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
 				'secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
 				'region' => 'us-east-1',  
 				'bucket' => 'xxxxxxxxxxxxxxx',     					
-				'endpoint' => 'http://xxx.xxx.xxx.xxx:xxxx/'	
+				'endpoint' => 'http(s)://xxx.xxx.xxx.xxx:xxxx/'	
 		];
 	```
 + Si "HTTP Basic Authentication" n'est pas setté via $_SERVER['PHP_AUTH_USER'], supprimer la ligne
