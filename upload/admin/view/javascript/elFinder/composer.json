@@ -26,9 +26,7 @@
         }
     ],
     "require": {
-        "php": ">=5.2",
-        "barryvdh/elfinder-flysystem-driver": "^0.2.1",
-        "league/flysystem-aws-s3-v3": "^1.0"
+        "php": ">=5.2"
     },
     "suggest": {
         "kunalvarma05/dropbox-php-sdk": "VolumeDriver `Dropbox`2 require `kunalvarma05/dropbox-php-sdk.",

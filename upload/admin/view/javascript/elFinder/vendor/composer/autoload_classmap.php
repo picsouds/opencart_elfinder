@@ -28,7 +28,6 @@ return array(
     'elFinderVolumeDropbox' => $baseDir . '/php/elFinderVolumeDropbox.class.php',
     'elFinderVolumeDropbox2' => $baseDir . '/php/elFinderVolumeDropbox2.class.php',
     'elFinderVolumeFTP' => $baseDir . '/php/elFinderVolumeFTP.class.php',
-    'elFinderVolumeFlysystem' => $vendorDir . '/barryvdh/elfinder-flysystem-driver/elFinderVolumeFlysystem.php',
     'elFinderVolumeFlysystemGoogleDriveCache' => $baseDir . '/php/elFinderFlysystemGoogleDriveNetmount.php',
     'elFinderVolumeFlysystemGoogleDriveNetmount' => $baseDir . '/php/elFinderFlysystemGoogleDriveNetmount.php',
     'elFinderVolumeGoogleDrive' => $baseDir . '/php/elFinderVolumeGoogleDrive.class.php',

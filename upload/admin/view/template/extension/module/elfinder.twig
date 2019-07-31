@@ -4,11 +4,23 @@
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       <h4 class="modal-title">Elfinder</h4>
     </div>
+    {% if (module_elfinder_status and module_elfinderconnector_status) %}
     <div class="modal-body">
 		<div class="elfinder-wr row">
 			<div id="elfinder" data-connector-url="{{ connector_url }}"></div>
 		</div>
 	 </div>
+	{% else %}
+	<div class="modal-body">
+	   <div class="alert alert-danger row" role="alert">
+		    <h4 class="alert-heading">{{ error_actived}}</h4>
+		    <hr>
+			<p> {{ error_actived_elfinder }}</p>
+			<p> {{ error_actived_elfinderconnector }}</p>
+		</div>
+	 </div>
+	{% endif %}
+	
   </div>
 </div>
 
@@ -72,7 +84,7 @@ $(document).ready(function() {
             function(file, fm) {                                                
                                                                                                                              
                 {% if target %}                
-				$('#{{target}}').val(file.url.startsWith("http")?file.url:file.path.substr(6));	 			
+				$('#{{target}}').val(file.path.substr(6));	 			
 				{% endif %}
         
 			    {% if thumb %}
@@ -80,7 +92,7 @@ $(document).ready(function() {
 				{% endif %}                      							                                   							
                       
                 {% if textarea %}         						
-				$('#{{textarea}}').summernote('insertImage',file.url.startsWith("http")?file.url:file.path.substr(6));
+				$('#{{textarea}}').summernote('insertImage',file.url);
 				{% endif %}                                    		
                                 		
                 $('#modal-image').modal('hide');

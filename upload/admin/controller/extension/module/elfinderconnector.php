@@ -1,14 +1,18 @@
 <?php
 
-use Aws\S3\S3Client;
-use League\Flysystem\AwsS3v3\AwsS3Adapter;
-use League\Flysystem\Filesystem;
-use League\Flysystem\Cached\CachedAdapter;
-use League\Flysystem\Cached\Storage\Memory as MemoryStore;
-
 class ControllerExtensionModuleelfinderconnector extends Controller {
 
-    public function index() {
+	public function index () {
+		if (in_array($this->request->server['REQUEST_METHOD'],['GET','POST'],true)) {
+			if ((isset($this->request->get['cmd'])) || (isset($this->request->post['cmd']))) {
+				$this->showElfinderconnector();
+			} else { // issu de marketplace/extension
+				$this->showElfindeconnectorAdmin();
+			}
+		}
+	}
+
+	public function showElfinderconnector() {
 			
 		
         $autoload_path = 'view/javascript/elFinder/php/autoload.php';
@@ -61,37 +65,7 @@ class ControllerExtensionModuleelfinderconnector extends Controller {
 				fwrite($fp, $log);
 				fclose($fp);
 			}
-		}
-
-		// Config minio 
-		$config_minio = [
-				'key' => 'xxxxxxxxxxxxxxxxxxxxxxxxx',
-				'secret' => 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
-				'region' => 'us-east-1',  
-				'bucket' => 'xxxxxxxxxxxxxxx',     					
-				'endpoint' => 'http://xxx.xxx.xxx.xxx:xxxx/'	//endpoint-url
-		];
-		
-		$client = S3Client::factory([
-        	'driver' => 's3',
-			'credentials' => [
-				'key'    => $config_minio['key'],
-				'secret' => $config_minio['secret']
-			],
-        	'region' =>  $config_minio['region'],
-			'version' => 'latest',
-         	'bucket_endpoint' => false,
-        	'use_path_style_endpoint' => true,
-        	'endpoint' => $config_minio['endpoint'],        		
-		]);                     
-               
-		$options = [
-				'override_visibility_on_copy' => true
-		];
-	
-		$AwsS3Adapter = new AwsS3Adapter($client,  $config_minio['bucket'], '', $options);
-		$adapter = new CachedAdapter($AwsS3Adapter,new MemoryStore());	 	 
-		$filesystem = new Filesystem($adapter); 	
+		}		
 				
 		$opts = array(
 		 //'debug' => true,
@@ -132,27 +106,6 @@ class ControllerExtensionModuleelfinderconnector extends Controller {
 				'uploadOrder'   => array('deny', 'allow'),      // Same as above
 				'accessControl' => 'access',                    // Same as above,
 				'attributes'	=> array( array( 'pattern'=>'/.+/', 'hidden'=>(isset($_SERVER['PHP_AUTH_USER']))? false : true ))
-			),
-			array (
-			    'driver'        => 'Flysystem',
-				'filesystem'    => $filesystem,			
-				'alias'			=> 'minio '.$config_minio['bucket'],				
-				'path'          => '/',							
-				'URL'			=>  $config_minio['endpoint'].$config_minio['bucket'],	// bucket need policy public (s3api example https://github.com/minio/minio/issues/1508)	
-				'trashHash'     => 't1_Lw',                    	// elFinder's hash of trash folder
-				'tmbPath'		=> DIR_IMAGE . '.Flysystem/.tmb',
-				'tmbURL'        => '../image/.Flysystem/.tmb/',				
-				'winHashFix'    => DIRECTORY_SEPARATOR !== '/', // to make hash same to Linux one on windows too
-				'uploadDeny'    => array('all'),                // Recomend the same settings as the original volume that uses the trash
-				'uploadAllow'   => array('image'),				// Same as above
-				'uploadOrder'   => array('deny', 'allow'),      // Same as above
-				'accessControl' => 'access',                    // Same as above,
-				'icon'          => './view/javascript/elFinder/img/Amazon-Simple-Storage-Service-S3_Bucket-with-Objects_light-bg.svg',
-				'cache'         => false,
-				'attributes'    => array( array( 'pattern'=>'/.+/', 'hidden'=>(isset($_SERVER['PHP_AUTH_USER']))? false : true )),
-				'tmbSize'       => 100,
-				'useRemoteArchive' => true,
-				//'disabled'	    => array ('edit'),
 			)
 			)
 		);	
@@ -161,5 +114,77 @@ class ControllerExtensionModuleelfinderconnector extends Controller {
         $connector = new elFinderConnector(new elFinder($opts));
         $connector->run();  
     } 
+    
+    public function showElfindeconnectorAdmin() {
+    	$this->load->language('extension/module/elfinderconnector');
+    	
+    	$this->document->setTitle($this->language->get('heading_title'));
+    	
+    	$this->load->model('setting/setting');
+    	
+    	if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+    		$this->model_setting_setting->editSetting('module_elfinderconnector', $this->request->post);
+    		
+    		$this->session->data['success'] = $this->language->get('text_success');
+    		
+    		$this->response->redirect($this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true));
+    	}
+    	
+    	if (isset($this->error['warning'])) {
+    		$data['error_warning'] = $this->error['warning'];
+    	} else {
+    		$data['error_warning'] = '';
+    	}
+    	
+    	$data['breadcrumbs'] = array();
+    	
+    	$data['breadcrumbs'][] = array(
+    			'text' => $this->language->get('text_home'),
+    			'href' => $this->url->link('common/dashboard', 'user_token=' . $this->session->data['user_token'], true)
+    	);
+    	
+    	$data['breadcrumbs'][] = array(
+    			'text' => $this->language->get('text_extension'),
+    			'href' => $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true)
+    	);
+    	
+    	$data['breadcrumbs'][] = array(
+    			'text' => $this->language->get('heading_title'),
+    			'href' => $this->url->link('extension/module/elfinder', 'user_token=' . $this->session->data['user_token'], true)
+    	);
+    	
+    	$data['action'] = $this->url->link('extension/module/elfinderconnector', 'user_token=' . $this->session->data['user_token'], true);
+    	
+    	$data['cancel'] = $this->url->link('marketplace/extension', 'user_token=' . $this->session->data['user_token'] . '&type=module', true);
+    	
+    	if (isset($this->request->post['module_elfinderconnector_status'])) {
+    		$data['module_elfinderconnector_status'] = $this->request->post['module_elfinderconnector_status'];
+    	} else {
+    		$data['module_elfinderconnector_status'] = $this->config->get('module_elfinderconnector_status');
+    	}
+    	
+    	$data['header'] = $this->load->controller('common/header');
+    	$data['column_left'] = $this->load->controller('common/column_left');
+    	$data['footer'] = $this->load->controller('common/footer');
+    	
+    	$this->response->setOutput($this->load->view('extension/module/elfinderconnectoradmin', $data));
+    }
+    
+    protected function validate() {
+    	if (!$this->user->hasPermission('modify', 'extension/module/elfinderconnector')) {
+    		$this->error['warning'] = $this->language->get('error_permission');
+    	}
+    	
+    	return !$this->error;
+    }
+ 
+    // Activation par défaut
+    public function install() {
+		$this->load->model('setting/setting');
+		$settings['module_elfinderconnector_status'] = 1;
+		$this->model_setting_setting->editSetting('module_elfinderconnector', $settings);
+	}
+ 
+    public function uninstall() {}
 
 }
