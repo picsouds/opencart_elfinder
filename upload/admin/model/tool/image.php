@@ -18,7 +18,7 @@ class ModelToolImage extends Model {
 		if (!is_file(DIR_IMAGE . $image_new) || (filemtime(DIR_IMAGE . $image_old) > filemtime(DIR_IMAGE . $image_new))) {
 			list($width_orig, $height_orig, $image_type) = getimagesize(DIR_IMAGE . $image_old);
 				 
-			if (!in_array($image_type, array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF))) { 
+			if (!in_array($image_type, array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF, IMAGETYPE_WEBP))) { 
 				return DIR_IMAGE . $image_old;
 			}
 	 
@@ -45,10 +45,12 @@ class ModelToolImage extends Model {
 			$img_log = new Log('img_log.log');  //storage/logs
 	        
 			$optimized_image_path = escapeshellarg(DIR_IMAGE . $image_new);
-			if (($extension == 'jpeg' || $extension == 'jpg') && (static::canDoOptimise()['jpegoptim'])) {
+			if (in_array($image_type, array(IMAGETYPE_JPEG)) && (static::canDoOptimise()['jpegoptim'])) {
 				$img_log->write(shell_exec("jpegoptim --max=85 -strip-all --all-progressive " . $optimized_image_path ."| tr '\n' ' '"));
-			} elseif (($extension == 'png') && (static::canDoOptimise()['optipng'])) {
+			} elseif (in_array($image_type, array(IMAGETYPE_PNG)) && (static::canDoOptimise()['optipng'])) {
 				$img_log->write(shell_exec("optipng -strip all -i0 -o4 ". $optimized_image_path ." 2>&1 | sed -n '/Processing/p;/Output file size/p' | tr '\n' ' '"));
+			} elseif (in_array($image_type, array(IMAGETYPE_WEBP)) && (static::canDoOptimise()['cwebp'])) {
+				$img_log->write(shell_exec("cwebp -q 85 ". $optimized_image_path ." 2>&1 | sed -n '/File/,/Output/p' | tr '\n' ' '"));
 			}
 				
 		}
@@ -65,6 +67,7 @@ class ModelToolImage extends Model {
 			static::$status = array(
 					'optipng'   => shell_exec("optipng --version 2>/dev/null"),
 					'jpegoptim' => shell_exec("jpegoptim --version 2>/dev/null"),
+					'cwebp' => shell_exec("cwebp -version 2>/dev/null")
 			);
 		}
 		

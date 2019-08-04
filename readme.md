@@ -4,7 +4,8 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
 
 # New Features !
 
-- Optimisation admin/catalog ModelToolImage avec jpegoptim et optipng
+- Optimisation admin/catalog ModelToolImage avec jpegoptim / optipng / cwebp
+- Rajout format image Webp dans system/library/image
 - TUI image editor 3.5.2
 - Suppression elfinder-flysystem-driver S3 (plus performant via montage [s3fs](https://github.com/s3fs-fuse/s3fs-fuse))
 
@@ -34,7 +35,7 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
     ```
 + Configuration du [client elFinder](https://github.com/Studio-42/elFinder/wiki/Client-configuration-options) dans admin/view/template/extension/module/elfinder.twig 
       
-### Configuration Minio avec RexRay
+### Exemple configuration RexRay avec [play.minio.io](https://play.minio.io:9000/minio/login) 
 
 	libstorage:
 		service: s3fs
@@ -44,13 +45,13 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
 			  mount:
 				rootPath: /
 	s3fs:
-	  accessKey: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-	  secretKey: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-	  endpoint: http://xxx.xxx.xxx.xxx:xxxx/
+	  accessKey: Q3AM3UQ867SPQQA43P2F
+	  secretKey: zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+	  endpoint: https://play.minio.io:9000  
 	  region: us-east-1
       disablePathStyle: false 
       options:
-      - url=http://xxx.xxx.xxx.xxx:xxxx/
+      - url=https://play.minio.io:9000
       - use_path_request_style
       - nonempty
       - allow_other  
