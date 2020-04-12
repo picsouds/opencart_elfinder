@@ -3,7 +3,6 @@
     "description": "File manager for web",
     "license":     "BSD-3-Clause",
     "homepage":    "http://elfinder.org",
-    "version":     "2.1.49",
     "authors": [
         {
             "name":     "Dmitry Levashov",

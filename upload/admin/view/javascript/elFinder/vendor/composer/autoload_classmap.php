@@ -23,6 +23,7 @@ return array(
     'elFinderPluginWatermark' => $baseDir . '/php/plugins/Watermark/plugin.php',
     'elFinderSession' => $baseDir . '/php/elFinderSession.php',
     'elFinderSessionInterface' => $baseDir . '/php/elFinderSessionInterface.php',
+    'elFinderTriggerException' => $baseDir . '/php/elFinder.class.php',
     'elFinderVolumeBox' => $baseDir . '/php/elFinderVolumeBox.class.php',
     'elFinderVolumeDriver' => $baseDir . '/php/elFinderVolumeDriver.class.php',
     'elFinderVolumeDropbox' => $baseDir . '/php/elFinderVolumeDropbox.class.php',
