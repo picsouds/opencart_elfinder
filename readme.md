@@ -12,8 +12,8 @@ Exemple de remplacement du FileManager Opencart standard (upload image+summernot
 ### Core
 
 * Opencart 3.0.3 standard 
-* Elfinder 2.1.49 standard 
-* Testé avec Minio RELEASE.2019-07-24T02-02-23Z + mount Filesystem S3FS avec [Rexray](https://rexray.io/) via [DockerPlugin](https://github.com/rexray/rexray#runtime---docker-plugin)
+* Elfinder 2.1.56 standard 
+* Testé avec Minio RELEASE.2019-07-24T02-02-23Z + mount Filesystem S3FS avec [Rexray](https://rexray.readthedocs.io/en/stable/) via [Service (Docker)](https://github.com/rexray/rexray#runtime---service-docker)
 
 ### Installation (hors vqmod/ocmod)
 
