@@ -50,7 +50,7 @@ class ModelToolImage extends Model {
 	        
 			$optimized_image_path = escapeshellarg(DIR_IMAGE . $image_new);
 			if (in_array($image_type, array(IMAGETYPE_JPEG)) && (static::canDoOptimise()['jpegoptim'])) {
-				$img_log->write(shell_exec("jpegoptim --max=85 -strip-all --all-progressive " . $optimized_image_path ."| tr '\n' ' '"));
+				$img_log->write(shell_exec("jpegoptim --max=85 --strip-all --all-progressive " . $optimized_image_path ."| tr '\n' ' '"));
 			} elseif (in_array($image_type, array(IMAGETYPE_PNG)) && (static::canDoOptimise()['optipng'])) {
 				$img_log->write(shell_exec("optipng -strip all -i0 -o4 ". $optimized_image_path ." 2>&1 | sed -n '/Processing/p;/Output file size/p' | tr '\n' ' '"));
 			} elseif (in_array($image_type, array(IMAGETYPE_WEBP)) && (static::canDoOptimise()['cwebp'])) {
