@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit53c89daa11a84034594e17ce91f2c6d2
+class ComposerStaticInit6457ef3c5cc606bf9b2dc47270b66381
 {
     public static $classMap = array (
         'RecursiveCallbackFilterIterator' => __DIR__ . '/../..' . '/php/elFinderVolumeLocalFileSystem.class.php',
@@ -44,7 +44,7 @@ class ComposerStaticInit53c89daa11a84034594e17ce91f2c6d2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit53c89daa11a84034594e17ce91f2c6d2::$classMap;
+            $loader->classMap = ComposerStaticInit6457ef3c5cc606bf9b2dc47270b66381::$classMap;
 
         }, null, ClassLoader::class);
     }

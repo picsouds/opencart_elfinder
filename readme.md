@@ -6,14 +6,14 @@ Exemple de remplacement du FileManager Opencart standard (upload image + summern
 
 # New Features !
 
-- Optimisation admin/catalog ModelToolImage avec jpegoptim / optipng / cwebp
-- Rajout format image Webp dans system/library/image
+- Optimisation admin/catalog ModelToolImage.php avec jpegoptim / optipng / cwebp
+- Rajout format image Webp system/library/image.php
 - Suppression elfinder-flysystem-driver S3 (plus performant via montage volume [s3fs](https://github.com/s3fs-fuse/s3fs-fuse))
 
 ### Core
 
 * Opencart 3.0.3.6 standard 
-* Elfinder 2.1.56 standard *(rajout webp dans elFinderVolumeDriver.class.php)*
+* Elfinder 2.1.57 standard *(rajout webp dans elFinderVolumeDriver.class.php)*
 * Testé avec Minio RELEASE.2021-04-06T23-11-00Z + montage [s3fs-volume-plugin](https://github.com/marcelo-ochoa/docker-volume-plugins/tree/master/s3fs-volume-plugin) via docker plugin
 * Docker CE - version 20.10.6, build 370c289
 
