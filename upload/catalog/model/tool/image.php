@@ -4,8 +4,6 @@ class ModelToolImage extends Model {
 	private static $status = null;
 	
 	public function resize($filename, $width, $height) {
-		
-	
 		if (!is_file(DIR_IMAGE . $filename) || substr(str_replace('\\', '/', realpath(DIR_IMAGE . $filename)), 0, strlen(DIR_IMAGE)) != str_replace('\\', '/', DIR_IMAGE)) {
 			return;
 		}
@@ -53,11 +51,11 @@ class ModelToolImage extends Model {
 				$img_log->write(shell_exec("cwebp -q 85 ". $optimized_image_path ." 2>&1 | sed -n '/File/,/Output/p' | tr '\n' ' '"));
 			}
 		}
-				
+
 		$image_new = str_replace(' ', '%20', $image_new);  // fix bug when attach image on email (gmail.com). it is automatic changing space " " to +
 		
 		return $this->config->get('config_url') . 'image/' . $image_new;
-	}	
+	}
 	
 	public static function canDoOptimise() {
 		if (static::$status === null) {
@@ -69,6 +67,5 @@ class ModelToolImage extends Model {
 		}
 		
 		return static::$status;
-	}
-		
+	}	
 }
