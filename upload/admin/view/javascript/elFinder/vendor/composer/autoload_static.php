@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6457ef3c5cc606bf9b2dc47270b66381
+class ComposerStaticInitdd4a70888a2ebeac5201fec0f3a0b21c
 {
     public static $classMap = array (
         'RecursiveCallbackFilterIterator' => __DIR__ . '/../..' . '/php/elFinderVolumeLocalFileSystem.class.php',
@@ -37,6 +37,7 @@ class ComposerStaticInit6457ef3c5cc606bf9b2dc47270b66381
         'elFinderVolumeLocalFileSystem' => __DIR__ . '/../..' . '/php/elFinderVolumeLocalFileSystem.class.php',
         'elFinderVolumeMySQL' => __DIR__ . '/../..' . '/php/elFinderVolumeMySQL.class.php',
         'elFinderVolumeOneDrive' => __DIR__ . '/../..' . '/php/elFinderVolumeOneDrive.class.php',
+        'elFinderVolumeSFTPphpseclib' => __DIR__ . '/../..' . '/php/elFinderVolumeSFTPphpseclib.class.php',
         'elFinderVolumeTrash' => __DIR__ . '/../..' . '/php/elFinderVolumeTrash.class.php',
         'elFinderVolumeTrashMySQL' => __DIR__ . '/../..' . '/php/elFinderVolumeTrashMySQL.class.php',
     );
@@ -44,7 +45,7 @@ class ComposerStaticInit6457ef3c5cc606bf9b2dc47270b66381
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit6457ef3c5cc606bf9b2dc47270b66381::$classMap;
+            $loader->classMap = ComposerStaticInitdd4a70888a2ebeac5201fec0f3a0b21c::$classMap;
 
         }, null, ClassLoader::class);
     }

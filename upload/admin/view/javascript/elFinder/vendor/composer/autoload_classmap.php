@@ -36,6 +36,7 @@ return array(
     'elFinderVolumeLocalFileSystem' => $baseDir . '/php/elFinderVolumeLocalFileSystem.class.php',
     'elFinderVolumeMySQL' => $baseDir . '/php/elFinderVolumeMySQL.class.php',
     'elFinderVolumeOneDrive' => $baseDir . '/php/elFinderVolumeOneDrive.class.php',
+    'elFinderVolumeSFTPphpseclib' => $baseDir . '/php/elFinderVolumeSFTPphpseclib.class.php',
     'elFinderVolumeTrash' => $baseDir . '/php/elFinderVolumeTrash.class.php',
     'elFinderVolumeTrashMySQL' => $baseDir . '/php/elFinderVolumeTrashMySQL.class.php',
 );
