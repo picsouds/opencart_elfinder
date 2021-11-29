@@ -15,7 +15,7 @@ class ControllerExtensionModuleelfinderconnector extends Controller {
 	public function showElfinderconnector() {
 			
 		
-        $autoload_path = 'view/javascript/elFinder/php/autoload.php';
+        $autoload_path = 'view/javascript/elFinder/vendor/autoload.php';
         $autoload_full_path = DIR_APPLICATION.$autoload_path;
         
         if (!file_exists($autoload_full_path)) {
@@ -23,7 +23,6 @@ class ControllerExtensionModuleelfinderconnector extends Controller {
             exit(1);
         }
         require $autoload_full_path;
-        require DIR_APPLICATION.'view/javascript/elFinder/vendor/autoload.php';
 
 		function access($attr, $path, $data, $volume, $isDir, $relpath) {
 			$basename = basename($path);
