@@ -7,12 +7,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Studio-42/elFinder.git",
-                "reference": "e5ca28f04d37b98d82df92dbdd4ad7cb8ef76911"
+                "reference": "210849ffaa480e320464b394ee0cc9ffb6877bb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/e5ca28f04d37b98d82df92dbdd4ad7cb8ef76911",
-                "reference": "e5ca28f04d37b98d82df92dbdd4ad7cb8ef76911",
+                "url": "https://api.github.com/repos/Studio-42/elFinder/zipball/210849ffaa480e320464b394ee0cc9ffb6877bb4",
+                "reference": "210849ffaa480e320464b394ee0cc9ffb6877bb4",
                 "shasum": ""
             },
             "require": {
@@ -24,7 +24,7 @@
                 "kunalvarma05/dropbox-php-sdk": "VolumeDriver `Dropbox`2 require `kunalvarma05/dropbox-php-sdk.",
                 "nao-pon/flysystem-google-drive": "require in GoogleDrive network volume mounting with Flysystem."
             },
-            "time": "2021-11-12T06:00:21+00:00",
+            "time": "2022-04-27T14:53:06+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -61,7 +61,7 @@
             "homepage": "http://elfinder.org",
             "support": {
                 "issues": "https://github.com/Studio-42/elFinder/issues",
-                "source": "https://github.com/Studio-42/elFinder/tree/2.1.60"
+                "source": "https://github.com/Studio-42/elFinder/tree/2.1"
             },
             "funding": [
                 {

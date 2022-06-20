@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInite660378f77e96a4afacb66374f569b7b
+class ComposerStaticInit2f5f5ca4facb83c180f2019278cf60e9
 {
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -23,6 +23,7 @@ class ComposerStaticInite660378f77e96a4afacb66374f569b7b
         'elFinderPluginNormalizer' => __DIR__ . '/..' . '/studio-42/elfinder/php/plugins/Normalizer/plugin.php',
         'elFinderPluginSanitizer' => __DIR__ . '/..' . '/studio-42/elfinder/php/plugins/Sanitizer/plugin.php',
         'elFinderPluginWatermark' => __DIR__ . '/..' . '/studio-42/elfinder/php/plugins/Watermark/plugin.php',
+        'elFinderPluginWinRemoveTailDots' => __DIR__ . '/..' . '/studio-42/elfinder/php/plugins/WinRemoveTailDots/plugin.php',
         'elFinderSession' => __DIR__ . '/..' . '/studio-42/elfinder/php/elFinderSession.php',
         'elFinderSessionInterface' => __DIR__ . '/..' . '/studio-42/elfinder/php/elFinderSessionInterface.php',
         'elFinderTriggerException' => __DIR__ . '/..' . '/studio-42/elfinder/php/elFinder.class.php',
@@ -46,7 +47,7 @@ class ComposerStaticInite660378f77e96a4afacb66374f569b7b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInite660378f77e96a4afacb66374f569b7b::$classMap;
+            $loader->classMap = ComposerStaticInit2f5f5ca4facb83c180f2019278cf60e9::$classMap;
 
         }, null, ClassLoader::class);
     }

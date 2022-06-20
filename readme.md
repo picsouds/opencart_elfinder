@@ -12,9 +12,9 @@ Exemple de remplacement du FileManager Opencart standard (upload image + summern
 ### Core
 
 * Opencart 3.0.3.8 standard (php:7.4-fpm-alpine / mysql:8.0)
-* Elfinder 2.1.60 standard (compatible with Opencart jQuery/UI: 2.1.1/1.11.4)
-* Testé avec Minio RELEASE.2021-04-06T23-11-00Z + montage [s3fs-volume-plugin](https://github.com/marcelo-ochoa/docker-volume-plugins/tree/master/s3fs-volume-plugin) via docker plugin
-* Docker CE - version 20.10.6, build 370c289
+* Elfinder 2.1.61 standard (compatible with Opencart jQuery/UI: 2.1.1/1.11.4)
+* Testé avec Minio RELEASE.2022-05-19T18-20-59Z + montage [s3fs-volume-plugin](https://github.com/marcelo-ochoa/docker-volume-plugins/tree/master/s3fs-volume-plugin) via docker plugin
+* Docker CE - version 20.10.17
 
 ### Installation (hors vqmod/ocmod)
 
